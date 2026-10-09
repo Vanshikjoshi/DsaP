@@ -18,6 +18,19 @@ class MyList:
             result += str(self.A[i]) + ", "
         return "[" + result[:-2] + "]"
 
+    def __getitem__(self, index):
+        if index < 0 or index >= self.n:
+            raise IndexError("Index out of bounds")
+        return self.A[index]
+
+    def pop(self):
+        if self.n == 0:
+            raise IndexError("Pop from empty list")
+        item = self.A[self.n - 1]
+        self.A[self.n - 1] = None
+        self.n -= 1
+        return item
+
     def append(self, item):
         if self.n == self.size:
             self.__resize(2 * self.size)
@@ -41,3 +54,5 @@ l.append(True)
 l.append(3.14)
 print(len(l))
 print(l)
+print(l[0])
+print(l.pop())
