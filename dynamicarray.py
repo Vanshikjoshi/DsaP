@@ -16,7 +16,7 @@ class MyList:
         result = ""
         for i in range(self.n):
             result += str(self.A[i]) + ", "
-        return "[" + result + "]"
+        return "[" + result[:-2] + "]"
 
     def append(self, item):
         if self.n == self.size:
